@@ -15,15 +15,25 @@ async function main() {
     // hehe
     await wait(5000);
     console.log("I waited");
+    const doc = await getNextKeyword(db);
+    console.log(doc);
+    await wait(5000);
+    const doc2 = await getNextKeyword(db);
   }
 }
 
 async function wait(millis) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve();
     }, millis);
   });
+}
+
+async function getNextKeyword(db) {
+  return db
+    .collection("keyword")
+    .findOneAndUpdate({ status: "READY" }, { $set: { status: "PROCESSING" } });
 }
 
 async function createConnection() {
@@ -36,7 +46,7 @@ async function createConnection() {
         reject(err);
       }
       console.log("Connected successfully to server");
-      resolve(client.db("index"));
+      resolve(client.db("search"));
     });
   });
 }

@@ -19,7 +19,13 @@
   },
   "homepage": "https://github.com/sovietspy2/fancy_search_engine#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.2.0",
-    "mongodb": "^3.5.2"
+    "lodash.uniq": "^4.5.0",
+    "log4js": "^6.1.1",
+    "mongodb": "^3.5.2",
+    "node-fetch": "^2.6.0",
+    "request": "^2.88.0",
+    "string-similarity": "^4.0.1"
   }
 }
